@@ -29,6 +29,7 @@ output:
 ```{r, echo=TRUE}
   hist(x=total_step,breaks=20,xlab="Total Steps Per Day", ylab="Frequency", main="The distribution of total step per day(missing data ignored)")
 ```
+![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1.png)
 
 #### Calculate and report the mean and median of the total number of steps taken per day.
 ```{r, echo=TRUE}
@@ -43,6 +44,7 @@ output:
   interval_int <- data.frame(interval=as.integer(names(interval_avg)), avg=interval_avg)
   with(interval_int, plot(interval, avg,type="l", xlab="5 minute intervals", ylab="average steps by interval across all day", main="average daily activity pattern"))
 ```
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
 
 #### Maximum number of steps
 ```{r, echo=TRUE}
@@ -70,6 +72,7 @@ Here, I will devise the strategy for filling in all the missing values into aver
   new_total <- tapply(data_impute$steps, data_impute$date, sum, na.rm=TRUE)
   hist(x=new_total, breaks=20, xlab="total steps per day", ylab="frequency", main="the distribution of total steps, missing data imputed")
 ```
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png)
 
 #### mean and median
 ```{r, echo=TRUE}
@@ -90,3 +93,4 @@ Here, I will devise the strategy for filling in all the missing values into aver
   g <- ggplot(average_weekday, aes(x=interval, y=average_steps)) + geom_line() + facet_grid(weekday~.) + labs(x="Interval") + labs(y="Steps")
   g
 ```
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
